@@ -22,6 +22,9 @@ use App\Http\Controllers\FrontEnd\CommentController;
 |
 */
 
+
+
+// _____________Front End Route_____________
 Route::get('/', function () {
     return view('front-end.page.home');
 });
