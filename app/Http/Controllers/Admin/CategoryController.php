@@ -149,7 +149,6 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $_id = Hashids::decode($id);
-
         $data = category::where('id', $_id)->first();
 
         $image_path         = public_path("\Image\\") .$data->image;
@@ -157,7 +156,7 @@ class CategoryController extends Controller
             File::delete($image_path);;
         }
         $data->delete();
-
+        $data->post()->delete();
         return redirect()->back()->with('message', 'Category deleted successfully!');
     }
 }
