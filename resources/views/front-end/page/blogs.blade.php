@@ -33,7 +33,7 @@
                                         </a>
                                     </div>
                                     <div class="blog_details">
-                                        <a class="d-inline-block" href="{{route('blog.single', $id = Hashids::encode($item->id))}}">
+                                        <a class="d-inline-block" href="{{route('blog.single', $item->slug)}}">
                                             <h2 class="blog-head" style="color: #2d2d2d;">{{$item->name}}</h2>
                                         </a>
                                         <p>{{$item->description}}</p>

@@ -20,7 +20,7 @@
         <ul class="list cat-list">
            @foreach ($sidebar_categories as $item)
                 <li>
-                    <a href="{{route('page.archive', $id = Hashids::encode($item->id))}}" class="d-flex">
+                    <a href="{{route('page.category', $item->slug)}}" class="d-flex">
                         <p>{{$item->name}}</p>
                         {{-- <p style="padding-left: 3px;"> {{ $posts->count()}}</p> --}}
                     </a>

@@ -35,6 +35,9 @@
                             <!-- logo -->
                             <div class="footer-logo">
                                 <a href="index.html">
+                                    @php
+                                        $settings = App\Models\Setting::all();
+                                    @endphp
                                     @foreach ($settings as $item)
                                         <img src="{{asset('Image/'. $item->logo)}}" alt="">
                                     @endforeach

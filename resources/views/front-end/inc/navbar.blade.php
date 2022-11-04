@@ -3,6 +3,9 @@
         <div class="col-xl-12">
             <div class="row d-flex justify-content-between align-items-center">
                 <div class="header-info-left d-flex">
+                    @php
+                        $settings = App\Models\Setting::all();
+                    @endphp
                     @foreach ($settings as $item)
                     <ul>      
                         <li>Call Us: {{$item->site_phone}}</li>

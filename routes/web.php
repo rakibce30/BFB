@@ -32,8 +32,8 @@ Route::get('/', [FrontEndController::class, 'home'])->name('page.home');
 Route::get('/about', [FrontEndController::class, 'about'])->name('page.about');
 Route::get('/package', [FrontEndController::class, 'package'])->name('page.package');
 Route::get('/blogs', [FrontEndController::class, 'blogs'])->name('page.blogs');
-Route::get('/archive/{id}', [FrontEndController::class, 'archive'])->name('page.archive');
-Route::get('/blog/{id}', [FrontEndController::class, 'SinglePost'])->name('blog.single');
+Route::get('/category/{item_slug}', [FrontEndController::class, 'archive'])->name('page.category');
+Route::get('/blog/{item_slug}', [FrontEndController::class, 'SinglePost'])->name('blog.single');
 Route::get('/contact', [FrontEndController::class, 'contact'])->name('page.contact');
 Route::resource('comment', CommentController::class);
 

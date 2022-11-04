@@ -14,56 +14,47 @@ class FrontEndController extends Controller
 {
     public function home()
     {
-        $settings   =   Setting::all();
-        return view('front-end.page.home', compact('settings'));
+        return view('front-end.page.home');
     }
 
     public function about()
     {
-        $settings   =   Setting::all();
-        return view('front-end.page.about', compact('settings'));
+        return view('front-end.page.about');
     }
 
     public function package()
     {
-        $settings   =   Setting::all();
-        return view('front-end.page.package', compact('settings'));
+        return view('front-end.page.package');
     }
 
     public function blogs()
     {
-        $settings   =   Setting::all();
         $posts                  =   Post::orderBy('id', 'Desc')->paginate(2);
         $sidebar_posts          =   Post::all()->sortDesc()->take(3);
         $sidebar_categories     =   category::all()->sortDesc();
-        return view('front-end.page.blogs', compact('posts', 'sidebar_categories', 'sidebar_posts', 'settings'));
+        return view('front-end.page.blogs', compact('posts', 'sidebar_categories', 'sidebar_posts'));
     }
 
     public function contact()
     {
-        $settings   =   Setting::all();
-        return view('front-end.page.contact', compact('settings'));
+        return view('front-end.page.contact');
     }
-    public function archive($id)
+    public function archive($item_slug)
     {
-        $settings   =   Setting::all();
-        $_id                 =   Hashids::decode($id);
         $sidebar_posts       =   Post::all()->sortDesc()->take(3);
         $sidebar_categories  =   category::all()->sortDesc();
-        $cat_posts           =   Post::where('category_id', $_id)->get()->sortDesc();
+        $cat_posts           =   Post::where('slug', $item_slug)->get()->sortDesc();
 
         // dd($cat_posts);
-        return view('front-end.page.archive', compact('sidebar_posts', 'sidebar_categories', 'cat_posts', 'settings'));
+        return view('front-end.page.archive', compact('sidebar_posts', 'sidebar_categories', 'cat_posts'));
     }
 
-    public function SinglePost($id)
+    public function SinglePost($item_slug)
     {
-        $settings   =   Setting::all();
-        $_id                    =   Hashids::decode($id);
         $sidebar_posts          =   Post::all()->sortDesc()->take(4);
         $sidebar_categories     =   category::all()->sortDesc();
-        $post                   =   Post::where('id', $_id)->first();
+        $post                   =   Post::where('slug', $item_slug)->first();
 
-        return view('front-end.page.post', compact('post', 'sidebar_categories', 'sidebar_posts', 'settings'));
+        return view('front-end.page.post', compact('post', 'sidebar_categories', 'sidebar_posts'));
     }
 }
